@@ -10,3 +10,8 @@ A straightforward flashcard app enhanced with AI for effortless learning.
 #### Backend
 - GO 
 - Postgres DB
+
+#### Feature Ideas
+- [ ] Fact Checker for making cards
+- [ ] AI Creation based on notes
+- [ ] ToJSON / FromJSON for cards
