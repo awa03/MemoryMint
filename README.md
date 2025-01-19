@@ -14,4 +14,5 @@ A straightforward flashcard app enhanced with AI for effortless learning.
 #### Feature Ideas
 - [ ] Fact Checker for making cards
 - [ ] AI Creation based on notes
+- [ ] Make Quizlet from created cards
 - [ ] ToJSON / FromJSON for cards
