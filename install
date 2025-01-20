@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Check if npm is installed
+if ! command -v npm &> /dev/null; then
+    echo "npm is not installed, installing npm..."
+    # Install npm (if Node.js is not installed, it will install both npm and Node.js)
+    curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+else
+    echo "npm is already installed."
+fi
+
+# Check if npx is installed (it comes with npm)
+if ! command -v npx &> /dev/null; then
+    echo "npx is not installed, installing npx..."
+    sudo npm install -g npx
+else
+    echo "npx is already installed."
+fi
+
+# Check if React, TypeScript, and JSX dependencies are installed
+if ! npm list -g react &> /dev/null; then
+    echo "Installing React, TypeScript, and JSX dependencies..."
+    npm install react react-dom typescript @types/react @types/react-dom
+else
+    echo "React, TypeScript, and JSX dependencies are already installed."
+fi
+
+# Check if Go is installed
+if ! command -v go &> /dev/null; then
+    echo "Go is not installed, installing Go..."
+    sudo apt-get install -y golang-go
+else
+    echo "Go is already installed."
+fi
+
+# Check if sqlite3 is installed
+if ! command -v sqlite3 &> /dev/null; then
+    echo "sqlite3 is not installed, installing sqlite3..."
+    sudo apt-get install -y sqlite3
+else
+    echo "sqlite3 is already installed."
+fi
+
+# Optionally, you can install any Go dependencies here by running go get or a module command if needed
+# Example: go get github.com/gorilla/mux (uncomment if needed)
+# go get github.com/gorilla/mux
+
+echo "All dependencies are installed!"
+

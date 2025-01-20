@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Navigate to the src directory (1 level below the script's location)
+cd "$(dirname "$0")/src" || exit
+
+# Run docker-compose up in the src directory
+sudo docker-compose up
+

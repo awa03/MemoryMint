@@ -1,0 +1,13 @@
+# .air.toml
+[build]
+  cmd = "go build -o main ."
+  bin = "./main"
+[watch]
+  dirs = ["./"]
+  extensions = ["go", "html", "js", "css", "json"]
+
+  ignore = ["vendor", "node_modules"]
+
+[log]
+  time = true
+
