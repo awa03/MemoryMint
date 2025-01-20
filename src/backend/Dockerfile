@@ -22,7 +22,7 @@ RUN go mod download
 COPY . .
 
 # Expose the port you want your app to run on (change as needed)
-EXPOSE 8080
+EXPOSE 5000
 
 # Run Air for live reloading
 CMD ["air"]

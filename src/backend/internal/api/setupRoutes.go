@@ -1,17 +1,31 @@
 package api
 
 import (
-	"net/http"
-
-	"github.com/labstack/echo/v4"
+    "log"
+    "net/http"
+    "github.com/labstack/echo/v4"
+    "github.com/labstack/echo/v4/middleware"
 )
 
 func Run() {
-	e := echo.New()
+    e := echo.New()
+    
+    // Add logging middleware
+    e.Use(middleware.Logger())
+    
+    e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+        AllowOrigins: []string{"http://localhost:5173"},
+        AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
+        AllowMethods: []string{http.MethodGet, http.MethodPut, http.MethodPost, http.MethodDelete},
+    }))
 
-	e.GET("/backendOn", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Yep Im On")
-	})
+    e.GET("/backendOn", func(c echo.Context) error {
+        log.Println("Received request to /backendOn")
+        return c.JSON(http.StatusOK, map[string]string{
+            "success": "Connected",
+        })
+    })
 
-	e.Logger.Fatal(e.Start(":5000"))
+    log.Printf("Server starting on port 5000")
+    e.Logger.Fatal(e.Start(":5000"))
 }

@@ -1,5 +1,4 @@
 version: '3.8'
-
 services:
   frontend:
     build:
@@ -9,11 +8,11 @@ services:
       - "5173:5173"
     volumes:
       - ./frontend:/app
-      - /app/node_modules
+      - /app/node_modules    # This ensures node_modules from container aren't overwritten
     environment:
-      - VITE_API_URL=http://localhost:8080
+      - VITE_API_URL=http://localhost:5000
     depends_on:
-      - backend
+      - backend  
 
   backend:
     build:
@@ -44,4 +43,5 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
 volumes:
-  postgres_data:
+  postgres_data: {}
+
