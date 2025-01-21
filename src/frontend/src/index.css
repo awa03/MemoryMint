@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* --user-font: Arial, sans-serif; /* Default fallback */ 
   line-height: 1.5;
   font-weight: 400;
 
@@ -17,4 +17,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  font-family: var(--user-font);
+}
 
+/* If you have specific card components, you can style them like this: */
+.card {
+  font-family: var(--card-font);
+}
