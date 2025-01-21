@@ -10,8 +10,7 @@ import (
 func Run() {
     e := echo.New()
     
-    // Add logging middleware
-    e.Use(middleware.Logger())
+    // e.Use(middleware.Logger())
     
     e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
         AllowOrigins: []string{"http://localhost:5173"},
@@ -20,7 +19,6 @@ func Run() {
     }))
 
     e.GET("/backendOn", func(c echo.Context) error {
-        log.Println("Received request to /backendOn")
         return c.JSON(http.StatusOK, map[string]string{
             "success": "Connected",
         })

@@ -1,35 +1,31 @@
 package initializers
 
 import (
-	"fmt"
 	"log"
 
-	"github.com/jmoiron/sqlx"
-	_ "github.com/mattn/go-sqlite3"
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
 )
 
-var DB *sqlx.DB
+var DB *gorm.DB
 
 func InitDB() {
+	var err error
 	dbFile := "./db/mydb.sqlite3"
 
-	DB, err := sqlx.Open("sqlite3", dbFile)
+	DB, err = gorm.Open(sqlite.Open(dbFile), &gorm.Config{})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("Failed to connect to database:", err)
 	}
 
-	fmt.Println("Database created successfully or already exists.")
-
-	createTable := `
-    CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT
-    );
-    `
-	_, err = DB.Exec(createTable)
+	sqlDB, err := DB.DB()
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("Failed to get database instance:", err)
 	}
 
-	fmt.Println("Table created successfully or already exists.")
+	sqlDB.SetMaxIdleConns(10)
+	sqlDB.SetMaxOpenConns(100)
+
+	log.Println("Database connection established successfully")
+
 }

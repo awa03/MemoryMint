@@ -3,6 +3,9 @@
 # Navigate to the src directory (1 level below the script's location)
 cd "$(dirname "$0")/src" || exit
 
+open http://localhost:5173/
+
 # Run docker-compose up in the src directory
 sudo docker-compose up
+
 
