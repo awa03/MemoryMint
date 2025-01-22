@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import settings from '@/config/settings.json';
-import Navigation from '@/components/Navigation'
+import Navigation from '@/components/Navigation';
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 interface Settings {
   user: {
@@ -25,18 +25,49 @@ interface Settings {
   };
 }
 
-// type for the handleChange function parameters
 type SettingSection = keyof Settings;
 type SettingValue = string | number | boolean;
 
 const SettingsPage: React.FC = () => {
-  const [settingsState, setSettingsState] = useState<Settings>(settings);
+  const [settingsState, setSettingsState] = useState<Settings | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/settings`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setSettingsState(data);
+      } catch (err) {
+        const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred';
+        setError(`Failed to load settings: ${errorMessage}`);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchSettings();
+  }, []);
 
   const handleChange = (section: SettingSection, key: string, value: SettingValue): void => {
+    if (!settingsState) return;
+    
     setSettingsState(prev => ({
-      ...prev,
+      ...prev!,
       [section]: {
-        ...prev[section],
+        ...prev![section],
         [key]: value
       }
     }));
@@ -54,17 +85,57 @@ const SettingsPage: React.FC = () => {
     handleChange(section, key, Number(e.target.value));
   };
 
-  const handleSave = (): void => {
+  const handleSave = async (): Promise<void> => {
+    if (!settingsState) return;
+    
+    setIsLoading(true);
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/settings`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(settingsState),
+      });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred';
+      setError(`Failed to save settings: ${errorMessage}`);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  useEffect(() => {
-    console.log('Settings updated:', settingsState);
-  }, [settingsState]);
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+        <div className="text-red-400 text-xl">{error}</div>
+      </div>
+    );
+  }
+
+  if (!settingsState) {
+    return (
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+        <div className="text-gray-200 text-xl">No settings data available</div>
+      </div>
+    );
+  }
 
   return (
-    <div className="min-h-screen bg-gray-900">
-      <Navigation className=""></Navigation>
+    <div className="min-h-screen max-w-screen overflow-x-hidden bg-gray-900">
+      <Navigation className="" />
       <div className="max-w-2xl mx-auto mt-5">
         <h1 className="text-3xl font-bold text-green-400 mb-8">Memory Mint Settings</h1>
         
@@ -85,7 +156,6 @@ const SettingsPage: React.FC = () => {
                 <option value="light">Light</option>
               </select>
             </div>
-
             <div>
               <label className="block text-gray-200 mb-2">Font</label>
               <select 
@@ -98,7 +168,6 @@ const SettingsPage: React.FC = () => {
                 <option value="Times New Roman">Times New Roman</option>
               </select>
             </div>
-
             <div className="flex items-center justify-between">
               <label className="text-gray-200">Notifications</label>
               <input 
@@ -127,7 +196,6 @@ const SettingsPage: React.FC = () => {
                 <option value="sequential">Sequential</option>
               </select>
             </div>
-
             <div>
               <label className="block text-gray-200 mb-2">Difficulty</label>
               <select 
@@ -158,7 +226,6 @@ const SettingsPage: React.FC = () => {
                 className="h-4 w-4 text-green-400 rounded focus:ring-green-400 focus:ring-opacity-25 bg-gray-700 border-gray-600"
               />
             </div>
-
             <div>
               <label className="block text-gray-200 mb-2">Animation Speed</label>
               <input 
@@ -188,7 +255,6 @@ const SettingsPage: React.FC = () => {
                 className="h-4 w-4 text-green-400 rounded focus:ring-green-400 focus:ring-opacity-25 bg-gray-700 border-gray-600"
               />
             </div>
-
             <div>
               <label className="block text-gray-200 mb-2">Volume</label>
               <input 
@@ -205,9 +271,10 @@ const SettingsPage: React.FC = () => {
 
         <button 
           onClick={handleSave}
-          className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded transition-colors duration-200"
+          disabled={isLoading}
+          className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Save Settings
+          {isLoading ? <LoadingSpinner /> : 'Save Settings'}
         </button>
       </div>
     </div>
