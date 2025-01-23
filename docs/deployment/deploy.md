@@ -42,7 +42,7 @@
 
 
 This Docker Compose file defines three services: frontend, backend, and db.
-### Services:
+## Services:
 #### 1. frontend:
     - Builds the frontend service from the Dockerfile located in the ./frontend directory.
     - Maps port 5173 on the host to port 5173 in the container.
@@ -67,3 +67,13 @@ This Docker Compose file defines three services: frontend, backend, and db.
 ### Volumes:
  
  - postgres_data: A named volume used to persist PostgreSQL data.
+
+## Running The App Anywhere!
+
+In order to run the application anywhere within your user profile you will need to add an alias to the file relative to your root directoy.
+
+To do this simply navigate to you `~/.bashrc` or `~/.zshrc` depending on your shell, and add the following line:
+
+```sh
+alias MemoryMint="~/Desktop/MemoryMint/MemoryMint" // or whatever the path to the sourcecode is
+```
