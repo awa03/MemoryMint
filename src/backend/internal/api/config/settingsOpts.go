@@ -2,7 +2,6 @@ package config
 
 import (
   "encoding/json"
-  "fmt"
   "main/internal/models/jsonmodels"
   "net/http"
   "os"
@@ -10,17 +9,10 @@ import (
 )
 
 func GetSettings(c echo.Context) error {
-  fileContent, err := os.ReadFile("./config/settings.json")
+  jsonData, err := jsonmodels.GetSettingsJson(); 
   if err != nil {
-    return c.JSON(http.StatusNotFound, map[string]string{
-      "error": fmt.Sprintf("Could not read settings file: %v", err),
-    })
-  }
-
-  var jsonData jsonmodels.SettingsJSON
-  if err := json.Unmarshal(fileContent, &jsonData); err != nil {
-    return c.JSON(http.StatusInternalServerError, map[string]string{
-      "error": "Failed to parse JSON",
+    return c.JSON(http.StatusNotAcceptable, map[string]string {
+      "error": err.Error(),
     })
   }
 

@@ -63,7 +63,7 @@ const SettingsPage: React.FC = () => {
 
   const handleChange = (section: SettingSection, key: string, value: SettingValue): void => {
     if (!settingsState) return;
-    
+
     setSettingsState(prev => ({
       ...prev!,
       [section]: {
@@ -87,7 +87,7 @@ const SettingsPage: React.FC = () => {
 
   const handleSave = async (): Promise<void> => {
     if (!settingsState) return;
-    
+
     setIsLoading(true);
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/settings`, {
@@ -106,6 +106,7 @@ const SettingsPage: React.FC = () => {
       setError(`Failed to save settings: ${errorMessage}`);
     } finally {
       setIsLoading(false);
+      window.location.href = "/"
     }
   };
 
@@ -138,11 +139,11 @@ const SettingsPage: React.FC = () => {
       <Navigation className="" />
       <div className="max-w-2xl mx-auto mt-5">
         <h1 className="text-3xl font-bold text-green-400 mb-8">Memory Mint Settings</h1>
-        
+
         {/* User Settings */}
         <div className="mb-8 bg-gray-800 p-6 rounded-lg">
           <h2 className="text-xl font-semibold text-green-400 mb-4">User Interface</h2>
-          
+
           <div className="space-y-4">
             <div>
               <label className="block text-gray-200 mb-2">Color Scheme</label>
@@ -164,8 +165,36 @@ const SettingsPage: React.FC = () => {
                 className="w-full bg-gray-700 text-gray-200 p-2 rounded border border-gray-600 focus:border-green-400 focus:outline-none"
               >
                 <option value="Arial">Arial</option>
+                <option value="Baskerville">Baskerville</option>
+                <option value="Book Antiqua">Book Antiqua</option>
+                <option value="Calibri">Calibri</option>
+                <option value="Cambria">Cambria</option>
+                <option value="Candara">Candara</option>
+                <option value="Century Gothic">Century Gothic</option>
                 <option value="Comic Sans MS">Comic Sans MS</option>
+                <option value="Consolas">Consolas</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Cursive">Cursive (Generic)</option>
+                <option value="Fantasy">Fantasy (Generic)</option>
+                <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+                <option value="Futura">Futura</option>
+                <option value="Garamond">Garamond</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Gill Sans">Gill Sans</option>
+                <option value="Helvetica">Helvetica</option>
+                <option value="Impact">Impact</option>
+                <option value="Lucida Console">Lucida Console</option>
+                <option value="Monaco">Monaco</option>
+                <option value="Monospace">Monospace (Generic)</option>
+                <option value="Optima">Optima</option>
+                <option value="Palatino Linotype">Palatino Linotype</option>
+                <option value="Rockwell">Rockwell</option>
+                <option value="Sans-serif">Sans-serif (Generic)</option>
+                <option value="Serif">Serif (Generic)</option>
+                <option value="Tahoma">Tahoma</option>
                 <option value="Times New Roman">Times New Roman</option>
+                <option value="Trebuchet MS">Trebuchet MS</option>
+                <option value="Verdana">Verdana</option>
               </select>
             </div>
             <div className="flex items-center justify-between">
@@ -183,7 +212,7 @@ const SettingsPage: React.FC = () => {
         {/* Game Settings */}
         <div className="mb-8 bg-gray-800 p-6 rounded-lg">
           <h2 className="text-xl font-semibold text-green-400 mb-4">Game Settings</h2>
-          
+
           <div className="space-y-4">
             <div>
               <label className="block text-gray-200 mb-2">Card Order</label>
@@ -215,7 +244,7 @@ const SettingsPage: React.FC = () => {
         {/* Display Settings */}
         <div className="mb-8 bg-gray-800 p-6 rounded-lg">
           <h2 className="text-xl font-semibold text-green-400 mb-4">Display Settings</h2>
-          
+
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <label className="text-gray-200">Show Animations</label>
@@ -244,7 +273,7 @@ const SettingsPage: React.FC = () => {
         {/* Audio Settings */}
         <div className="mb-8 bg-gray-800 p-6 rounded-lg">
           <h2 className="text-xl font-semibold text-green-400 mb-4">Audio Settings</h2>
-          
+
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <label className="text-gray-200">Enable Audio</label>

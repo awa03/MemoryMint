@@ -49,7 +49,6 @@ func Run() {
 
     e.PUT("/api/settings", config.SetSetting);
 
-
     log.Printf("Server starting on port 5000")
     e.Logger.Fatal(e.Start(":5000"))
 }

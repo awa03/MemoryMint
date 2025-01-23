@@ -5,7 +5,7 @@ import SettingsPage from '@/pages/Settings';
 
 interface GlobalSettings {
   user: {
-    colorscheme: 'default' | 'dark' | 'light';
+    colorscheme: string;
     font: string;
     notifications: boolean;
   };
@@ -44,18 +44,19 @@ const App: React.FC = () => {
         const data = await response.json();
         setSettings(data);
 
-        // Apply theme
-        const theme = data.user?.colorscheme || 'default';
-        document.documentElement.setAttribute('data-theme', theme);
-        
-        // Optional: Apply specific theme colors
-        if (theme === 'dark') {
-          document.body.classList.add('bg-theme-dark-background', 'text-theme-dark-text');
-        } else if (theme === 'light') {
-          document.body.classList.add('bg-theme-light-background', 'text-theme-light-text');
-        } else {
-          document.body.classList.add('bg-theme-default-background', 'text-theme-default-text');
-        }
+        // Apply global settings
+        document.documentElement.style.setProperty(
+          '--user-font', 
+          data.user?.font || 'Arial, sans-serif'
+        );
+        document.documentElement.style.setProperty(
+          '--card-font', 
+          data.cards?.font || 'Arial, sans-serif'
+        );
+        document.documentElement.setAttribute(
+          'data-theme', 
+          data.user?.colorscheme || 'default'
+        );
       } catch (error) {
         console.error('Failed to load settings', error);
       }
@@ -65,15 +66,7 @@ const App: React.FC = () => {
   }, []);
 
   const updateSettings = (newSettings: Partial<GlobalSettings>) => {
-    setSettings(prev => {
-      const updatedSettings = prev ? { ...prev, ...newSettings } : null;
-      
-      if (updatedSettings && updatedSettings.user?.colorscheme) {
-        document.documentElement.setAttribute('data-theme', updatedSettings.user.colorscheme);
-      }
-      
-      return updatedSettings;
-    });
+    setSettings(prev => prev ? { ...prev, ...newSettings } : null);
   };
 
   return (
