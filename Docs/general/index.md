@@ -1,1 +1,2 @@
-
+- [Mission Statement](mission-statement.md)
+- [To Do](todo.md)
