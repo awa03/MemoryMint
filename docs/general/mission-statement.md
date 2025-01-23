@@ -1,0 +1,3 @@
+# Mission Statement:
+
+MemoryMint is dedicated to revolutionizing the way people learn by providing a free, open-source flashcard platform with powerful customization features. Our mission is to empower learners by offering a flexible and user-friendly tool that supports personalized study methods. We believe knowledge should be accessible to all, and as such, we are committed to making the app’s core features free, removing the barriers posed by paid services like Quizlet. Through Docker containers and a focus on seamless integration, MemoryMint is designed to scale and adapt to users' needs, ensuring that learning is always within reach and available to everyone.
