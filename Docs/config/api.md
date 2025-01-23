@@ -1,23 +1,25 @@
 ## API
 ```go
-/api/settings // Handle Getting Settings
+e.GET("/api/settings", config.GetSettings);                                 // Global Settings 
 
-// not all traits will be directly accessible through getters
+e.GET("/api/settings/users", config.GetUserSettings);                       // User Settings 
+e.GET("/api/settings/users/font", config.GetUserFont);                      // Global Font
+e.GET("/api/settings/users/colorscheme", config.GetUserColorScheme);        // Global Color Scheme
+e.GET("/api/settings/users/notifications", config.GetUserNotifications);    // Global Notifications
 
-/api/settings/user/font // Get Global Font
-/api/settings/user/colorscheme // Get Global Colorscheme
-/api/settings/user/notifications // Bool if notifications are on
+e.GET("/api/settings/animations", config.GetAnimationsSettings);
+e.GET("/api/settings/animations/show", config.GetAnimationsShow);
+e.GET("/api/settings/animations/speed", config.GetAnimationsSpeed);
 
-/api/settings/cards/order // Get Card Ordering Algorithm
-/api/settings/cards/difficulty // Difficulty Ranking (INT)
-/api/settings/cards/font // Get Card Font
+e.GET("/api/settings/audio", config.GetAudioSettings);
+e.GET("/api/settings/audio/on", config.GetAudioOn);
+e.GET("/api/settings/audio/correct", config.GetAudioCorrect);
+e.GET("/api/settings/audio/incorrect", config.GetAudioIncorrect);
 
-/api/settings/animations/speed // Get Animation Speed 
-/api/settings/animations/show // Bool if animations on
+e.GET("/api/settings/cards", config.GetCardSettings);
+e.GET("/api/settings/cards/on", config.GetCardFont);
+e.GET("/api/settings/cards/correct", config.GetCardOrder);
+e.GET("/api/settings/cards/incorrect", config.GetCardDifficulty);
 
-/api/settings/audio/on // Bool if audio on 
-/api/settings/audio/volume // INT Volume Level
-/api/settings/audio/correct  // Get Audio Path for Correct
-/api/settings/audio/incorrect // Get Audio Paath for Incorrect
-// Changes will be added continually to the Settings API
+e.PUT("/api/settings", config.SetSetting);
 ```
