@@ -21,7 +21,16 @@ body {
   font-family: var(--user-font);
 }
 
-/* If you have specific card components, you can style them like this: */
 .card {
   font-family: var(--card-font);
+}
+
+[data-theme='dark'] {
+  background-color: theme('colors.theme.dark.background');
+  color: theme('colors.theme.dark.text');
+}
+
+[data-theme='light'] {
+  background-color: theme('colors.theme.light.background');
+  color: theme('colors.theme.light.text');
 }

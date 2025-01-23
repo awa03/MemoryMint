@@ -1,0 +1,22 @@
+{
+	"user": {
+		"colorscheme": "default",
+		"font": "Cambria",
+		"notifications": true
+	},
+	"cards": {
+		"order": "random",
+		"font": "Arial",
+		"difficulty": "all"
+	},
+	"animations": {
+		"show": true,
+		"speed": 100
+	},
+	"audio": {
+		"on": true,
+		"volume": 80,
+		"correct": "@/assets/audio/correct.mp4",
+		"incorrect": "@/assets/audio/incorrect.mp4"
+	}
+}
