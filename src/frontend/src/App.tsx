@@ -34,6 +34,45 @@ export const GlobalSettingsContext = React.createContext<{
   updateSettings: () => {}
 });
 
+/**
+ * The main application component.
+ * 
+ * This component is responsible for fetching and applying global settings,
+ * and providing the settings context to the rest of the application.
+ * 
+ * @returns The main application component.
+ * 
+ * @component
+ * 
+ * @example
+ * ```tsx
+ * import React from 'react';
+ * import { App } from './App';
+ * 
+ * const Root = () => (
+ *   <React.StrictMode>
+ *     <App />
+ *   </React.StrictMode>
+ * );
+ * 
+ * export default Root;
+ * ```
+ * 
+ * @remarks
+ * This component uses the `useEffect` hook to fetch global settings from an API
+ * and apply them to the document's root element. It also provides a context
+ * for accessing and updating these settings throughout the application.
+ * 
+ * @hook
+ * - `useState` to manage the global settings state.
+ * - `useEffect` to fetch and apply global settings on component mount.
+ * 
+ * @context
+ * - `GlobalSettingsContext` to provide the settings and update function.
+ * 
+ * @see {@link GlobalSettingsContext}
+ * @see {@link GlobalSettings}
+ */
 const App: React.FC = () => {
   const [settings, setSettings] = useState<GlobalSettings | null>(null);
 
