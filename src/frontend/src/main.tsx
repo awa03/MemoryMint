@@ -4,8 +4,6 @@ import './index.css';
 import App from './App.tsx';
 import settings from '@/config/settings.json';
 
-// use api request now
-
 // const root = document.documentElement;
 // const userFont = settings.user?.font || 'Arial, sans-serif';
 // const cardFont = settings.cards?.font || userFont; 

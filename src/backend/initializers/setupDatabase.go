@@ -23,8 +23,8 @@ func InitDB() {
 		log.Fatal("Failed to get database instance:", err)
 	}
 
-	sqlDB.SetMaxIdleConns(10)
-	sqlDB.SetMaxOpenConns(100)
+	sqlDB.SetMaxIdleConns(1000)
+	sqlDB.SetMaxOpenConns(1000)
 
 	log.Println("Database connection established successfully")
 
