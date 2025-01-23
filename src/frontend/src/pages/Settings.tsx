@@ -28,6 +28,63 @@ interface Settings {
 type SettingSection = keyof Settings;
 type SettingValue = string | number | boolean;
 
+/**
+ * SettingsPage component is responsible for rendering and managing the settings of the Memory Mint application.
+ * It fetches the settings from the backend API, allows the user to modify them, and saves the changes back to the API.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered component.
+ *
+ * @example
+ * <SettingsPage />
+ *
+ * @typedef {Object} Settings - The settings object structure.
+ * @property {Object} user - User-specific settings.
+ * @property {string} user.colorscheme - The color scheme setting.
+ * @property {string} user.font - The font setting.
+ * @property {boolean} user.notifications - The notifications setting.
+ * @property {Object} cards - Card-specific settings.
+ * @property {string} cards.order - The card order setting.
+ * @property {string} cards.difficulty - The card difficulty setting.
+ * @property {Object} animations - Animation-specific settings.
+ * @property {boolean} animations.show - The show animations setting.
+ * @property {number} animations.speed - The animation speed setting.
+ * @property {Object} audio - Audio-specific settings.
+ * @property {boolean} audio.on - The enable audio setting.
+ * @property {number} audio.volume - The audio volume setting.
+ *
+ * @typedef {string} SettingSection - The section of the settings (e.g., 'user', 'cards', 'animations', 'audio').
+ * @typedef {string | boolean | number} SettingValue - The value of a setting.
+ *
+ * @function handleChange
+ * @description Handles changes to the settings state.
+ * @param {SettingSection} section - The section of the settings to update.
+ * @param {string} key - The key of the setting to update.
+ * @param {SettingValue} value - The new value of the setting.
+ *
+ * @function handleSelectChange
+ * @description Handles changes to select inputs.
+ * @param {React.ChangeEvent<HTMLSelectElement>} e - The change event.
+ * @param {SettingSection} section - The section of the settings to update.
+ * @param {string} key - The key of the setting to update.
+ *
+ * @function handleCheckboxChange
+ * @description Handles changes to checkbox inputs.
+ * @param {React.ChangeEvent<HTMLInputElement>} e - The change event.
+ * @param {SettingSection} section - The section of the settings to update.
+ * @param {string} key - The key of the setting to update.
+ *
+ * @function handleRangeChange
+ * @description Handles changes to range inputs.
+ * @param {React.ChangeEvent<HTMLInputElement>} e - The change event.
+ * @param {SettingSection} section - The section of the settings to update.
+ * @param {string} key - The key of the setting to update.
+ *
+ * @function handleSave
+ * @description Handles saving the settings to the backend API.
+ * @returns {Promise<void>} A promise that resolves when the save operation is complete.
+ */
+
 const SettingsPage: React.FC = () => {
   const [settingsState, setSettingsState] = useState<Settings | null>(null);
   const [isLoading, setIsLoading] = useState(true);

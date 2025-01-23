@@ -14,6 +14,37 @@ interface ApiResponse {
 }
 
 
+/**
+ * HomePage component is the main landing page of the Memory Mint application.
+ * It checks the connection status with the backend API and displays the appropriate content based on the connection status.
+ * 
+ * @component
+ * 
+ * @returns {JSX.Element} The rendered component.
+ * 
+ * @example
+ * <HomePage />
+ * 
+ * @remarks
+ * - Displays a loading spinner while checking the connection status.
+ * - Shows an error message if the connection to the API fails.
+ * - Renders the main content of the homepage including the hero section, features section, and connection status.
+ * 
+ * @hook
+ * - useState: Manages the loading state, connection status, and error state.
+ * - useEffect: Checks the connection status with the backend API on component mount.
+ * 
+ * @dependencies
+ * - fetch: Used to make a GET request to the backend API.
+ * - import.meta.env.VITE_API_URL: Environment variable for the backend API URL.
+ * 
+ * @see
+ * - LoadingSpinner: Component to display a loading spinner.
+ * - Navigation: Component for the navigation bar.
+ * - ChevronRightIcon, BrainIcon, BookIcon, SparkleIcon: Icons used in the component.
+ */
+
+
 const HomePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [connectionStatus, setConnectionStatus] = useState<string>('');
