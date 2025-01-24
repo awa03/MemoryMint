@@ -1,7 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HomePage from '@/pages/Home';
-import SettingsPage from '@/pages/Settings';
+import LoadingSpinner from './components/LoadingSpinner';
+import Navigation from './components/Navigation';
+
+// Lazy load pages for better performance
+const HomePage = lazy(() => import('@/pages/Home'));
+const OptionsPage = lazy(() => import('@/pages/Options'));
+const SettingsPage = lazy(() => import('@/pages/Settings'));
+
 
 interface GlobalSettings {
   user: {
@@ -34,45 +40,6 @@ export const GlobalSettingsContext = React.createContext<{
   updateSettings: () => {}
 });
 
-/**
- * The main application component.
- * 
- * This component is responsible for fetching and applying global settings,
- * and providing the settings context to the rest of the application.
- * 
- * @returns The main application component.
- * 
- * @component
- * 
- * @example
- * ```tsx
- * import React from 'react';
- * import { App } from './App';
- * 
- * const Root = () => (
- *   <React.StrictMode>
- *     <App />
- *   </React.StrictMode>
- * );
- * 
- * export default Root;
- * ```
- * 
- * @remarks
- * This component uses the `useEffect` hook to fetch global settings from an API
- * and apply them to the document's root element. It also provides a context
- * for accessing and updating these settings throughout the application.
- * 
- * @hook
- * - `useState` to manage the global settings state.
- * - `useEffect` to fetch and apply global settings on component mount.
- * 
- * @context
- * - `GlobalSettingsContext` to provide the settings and update function.
- * 
- * @see {@link GlobalSettingsContext}
- * @see {@link GlobalSettings}
- */
 const App: React.FC = () => {
   const [settings, setSettings] = useState<GlobalSettings | null>(null);
 
@@ -82,25 +49,17 @@ const App: React.FC = () => {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/api/settings`);
         const data = await response.json();
         setSettings(data);
-
-        // Apply global settings
-        document.documentElement.style.setProperty(
-          '--user-font', 
-          data.user?.font || 'Arial, sans-serif'
-        );
-        document.documentElement.style.setProperty(
-          '--card-font', 
-          data.cards?.font || 'Arial, sans-serif'
-        );
-        document.documentElement.setAttribute(
-          'data-theme', 
-          data.user?.colorscheme || 'default'
-        );
+        
+        // Apply global settings more efficiently
+        const root = document.documentElement;
+        root.style.setProperty('--user-font', data.user?.font || 'Arial, sans-serif');
+        root.style.setProperty('--card-font', data.cards?.font || 'Arial, sans-serif');
+        root.setAttribute('data-theme', data.user?.colorscheme || 'default');
       } catch (error) {
         console.error('Failed to load settings', error);
       }
     };
-
+    
     fetchGlobalSettings();
   }, []);
 
@@ -111,10 +70,17 @@ const App: React.FC = () => {
   return (
     <GlobalSettingsContext.Provider value={{ settings, updateSettings }}>
       <Router>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/settings" element={<SettingsPage />} />
-        </Routes>
+        <Suspense fallback={
+          <div className="flex justify-center items-center h-screen bg-slate-900">
+            <LoadingSpinner />
+          </div>
+        }>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/options" element={<OptionsPage />}/>
+          </Routes>
+        </Suspense>
       </Router>
     </GlobalSettingsContext.Provider>
   );

@@ -16,9 +16,9 @@ const Navigation: React.FC = () => {
           </a>
           {/* Right Section */}
           <div className="flex items-center space-x-4">
-            <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg active:scale-90 animate duration-1000">
+            <a href="options" className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg active:scale-90 animate duration-1000">
               Get Started
-            </button>
+            </a>
             <SettingsButton className="text-white" />
           </div>
         </div>

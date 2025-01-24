@@ -5,7 +5,7 @@ import LoadingSpinner from '@/components/LoadingSpinner'
 import BookIcon from '@/components/icons/Book'
 import BrainIcon from '@/components/icons/Brain'
 import SparkleIcon from '@/components/icons/Brain'
-import ChevronRightIcon from '@/components/icons/ChevronRightIcon'
+import ChevronRightIcon from '@/components/icons/ChevronRight'
 import Navigation from '@/components/Navigation';
 
 
@@ -123,7 +123,7 @@ const HomePage: React.FC = () => {
       {/* Features Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          <div className="bg-gray-800 p-6 rounded-lg hover:shadow-blue-200">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-black-50 hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1">
             <div className="bg-green-400/10 rounded-lg p-3 w-12 h-12 flex items-center justify-center mb-4">
               <BrainIcon className="h-6 w-6 text-green-400" />
             </div>
@@ -132,7 +132,7 @@ const HomePage: React.FC = () => {
               Our algorithm adapts to your learning pace and optimizes review timing.
             </p>
           </div>
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-black-50 hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1">
             <div className="bg-green-400/10 rounded-lg p-3 w-12 h-12 flex items-center justify-center mb-4">
               <BookIcon className="h-6 w-6 text-green-400" />
             </div>
@@ -141,7 +141,7 @@ const HomePage: React.FC = () => {
               Create flashcards with text, images, and custom formatting.
             </p>
           </div>
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-black-50 hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1">
             <div className="bg-green-400/10 rounded-lg p-3 w-12 h-12 flex items-center justify-center mb-4">
               <SparkleIcon className="h-6 w-6 text-green-400" />
             </div>
