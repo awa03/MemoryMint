@@ -6,6 +6,7 @@ import Navigation from './components/Navigation';
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('@/pages/Home'));
 const OptionsPage = lazy(() => import('@/pages/Options'));
+const SetsPage = lazy(() => import('@/pages/Sets'));
 const SettingsPage = lazy(() => import('@/pages/Settings'));
 
 
@@ -79,6 +80,7 @@ const App: React.FC = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/options" element={<OptionsPage />}/>
+            <Route path="/sets" element={<SetsPage />}/>
           </Routes>
         </Suspense>
       </Router>
