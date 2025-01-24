@@ -1,7 +1,7 @@
 {
 	"user": {
 		"colorscheme": "default",
-		"font": "Cambria",
+		"font": "Arial",
 		"notifications": true
 	},
 	"cards": {
@@ -15,7 +15,7 @@
 	},
 	"audio": {
 		"on": true,
-		"volume": 80,
+		"volume": 96,
 		"correct": "@/assets/audio/correct.mp4",
 		"incorrect": "@/assets/audio/incorrect.mp4"
 	}

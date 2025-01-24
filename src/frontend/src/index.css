@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  /* --user-font: Arial, sans-serif; /* Default fallback */ 
+  --user-font: Arial, sans-serif; /* Default fallback */ 
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #111827;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
