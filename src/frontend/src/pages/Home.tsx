@@ -132,7 +132,7 @@ const HomePage: React.FC = () => {
               Our algorithm adapts to your learning pace and optimizes review timing.
             </p>
           </div>
-          <div className="bg-gray-800 p-6 rounded-lg shadow-black-50 hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1 bg-black/10 shadow-green-500/15" >
+          <div className="bg-gray-800 p-6 rounded-lg shadow-black-50 hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1 dark:bg-black/10 shadow-green-500/15" >
             <div className="bg-green-400/10 rounded-lg p-3 w-12 h-12 flex items-center justify-center mb-4">
               <BookIcon className="h-6 w-6 text-green-400" />
             </div>
@@ -141,7 +141,7 @@ const HomePage: React.FC = () => {
               Create flashcards with text, images, and custom formatting.
             </p>
           </div>
-          <div className="bg-gray-800 p-6 rounded-lg shadow-black-50 hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1 bg-black/10 shadow-green-500/15">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-black-50 hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1 dark:bg-black/10 shadow-green-500/15">
             <div className="bg-green-400/10 rounded-lg p-3 w-12 h-12 flex items-center justify-center mb-4">
               <SparkleIcon className="h-6 w-6 text-green-400" />
             </div>
