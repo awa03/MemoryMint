@@ -13,7 +13,7 @@ const Navigation: React.FC = () => {
     themeChange(false)
   }, [])
   return (
-    <nav className="bg-gray-800 w-screen">
+    <nav className="bg-black/10 shadow-green-500/10 shadow-lg w-screen">
       <div className="max-w-screen mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Left Section */}
@@ -25,10 +25,10 @@ const Navigation: React.FC = () => {
           </a>
           {/* Right Section */}
           <div className="flex items-center space-x-4">
+            <SettingsButton className="text-white" />
             <a href="options" className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg active:scale-90 animate duration-1000">
               Menu
             </a>
-            <SettingsButton className="text-white" />
           </div>
         </div>
       </div>

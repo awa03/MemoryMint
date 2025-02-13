@@ -19,6 +19,10 @@ const App: React.FC = () => {
           -webkit-mask-image: linear-gradient(white, transparent);
           mask-image: linear-gradient(black, transparent);
           }
+          .gear-mask{
+          -webkit-mask-image: linear-gradient(white, white);
+          mask-image: linear-gradient(white, white);
+          }
         .gear-mask:hover {
           animation-name: spin;
           animation-duration: 5000ms;
@@ -32,7 +36,7 @@ const App: React.FC = () => {
         `}</style>
 
       <a href="/settings">
-        <img src='gear.png' height="32" width="32" style={{}} className="gear-mask"></img>
+        <img src='gear.png' height="32" width="32" style={{}} className="gear-mask bg-white p-2 rounded-full"></img>
       </a>
 
     </div>

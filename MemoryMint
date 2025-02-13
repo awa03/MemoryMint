@@ -5,6 +5,7 @@ cd "$(dirname "$0")/src" || exit
 
 # open http://localhost:5173/
 
+echo "Building Docker file.. Backend may take a moment"
 # Run docker-compose up in the src directory
 sudo docker-compose up
 

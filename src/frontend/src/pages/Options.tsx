@@ -17,25 +17,25 @@ const OptionsPage: React.FC = () => {
         <div className='grid grid-cols-1 gap-8'>
 
           <a href="/sets">
-            <div className="bg-gray-800 p-10 rounded-lg shadow-black-50 hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1 text-3xl text-center bold flex items-center justify-center gap-4">
+            <div className="bg-white/10 shadow-green-500/10 hover:shadow-2xl p-10 rounded-lg  hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1 text-3xl text-center bold flex items-center justify-center gap-4">
               <FlashCardIcon/>Sets<FlashCardIcon />
             </div>
           </a>
 
           <a href="/tests">
-          <div className="bg-gray-800 p-10 rounded-lg shadow-black-50 hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1 text-3xl text-center bold flex items-center justify-center gap-4">
+          <div className="bg-white/10 shadow-green-500/10 hover:shadow-2xl p-10 rounded-lg shadow-black-50 hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1 text-3xl text-center bold flex items-center justify-center gap-4">
             <TestIcon/>Tests<TestIcon/>
           </div>
           </a>
 
           <a href="/classes"> 
-          <div className="bg-gray-800 p-10 rounded-lg shadow-black-50 hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1 text-3xl text-center bold flex items-center justify-center gap-4">
+          <div className="bg-white/10 shadow-green-500/10 hover:shadow-2xl p-10 rounded-lg hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1 text-3xl text-center bold flex items-center justify-center gap-4">
             <CapIcon/>Classes<CapIcon/>
           </div>
           </a>
 
           <a href="/history">
-          <div className="bg-gray-800 p-10 rounded-lg shadow-black-50 hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1 text-3xl text-center bold flex items-center justify-center gap-4">
+          <div className="bg-white/10 shadow-green-500/10 hover:shadow-2xl p-10 rounded-lg hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1 text-3xl text-center bold flex items-center justify-center gap-4">
             <HistoryIcon/>History<HistoryIcon/>
           </div>
           </a>

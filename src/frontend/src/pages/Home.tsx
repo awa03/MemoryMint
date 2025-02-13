@@ -94,7 +94,7 @@ const HomePage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-gray-900" data-theme="">
       <Navigation className="w-screen"></Navigation>
       
 
@@ -102,7 +102,7 @@ const HomePage: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center">
           <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
-            <span className="block">Grow Your Knowledge with</span>
+            <span className="block mb-5">Grow Your Knowledge with</span>
             <span className="block text-green-400">Memory Mint</span>
           </h1>
           <p className="mt-3 max-w-md mx-auto text-base text-gray-300 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
@@ -111,7 +111,7 @@ const HomePage: React.FC = () => {
           </p>
           <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
             <div className="rounded-md shadow">
-              <button className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-500 hover:bg-green-600 md:py-4 md:text-lg md:px-10  active:scale-90 animate duration-1000">
+              <button className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-500 hover:bg-green-600 md:py-4 md:text-lg md:px-10  active:scale-90 animate duration-1000 dark:bg-green-600 dark:hover:bg-green-700" >
                 Start Learning
                 <ChevronRightIcon className="ml-2 h-5 w-5" />
               </button>
@@ -123,7 +123,7 @@ const HomePage: React.FC = () => {
       {/* Features Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          <div className="bg-gray-800 p-6 rounded-lg shadow-black-50 hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-black-50 hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1 dark:bg-black/10 dark:shadow-green-500/15">
             <div className="bg-green-400/10 rounded-lg p-3 w-12 h-12 flex items-center justify-center mb-4">
               <BrainIcon className="h-6 w-6 text-green-400" />
             </div>
@@ -132,7 +132,7 @@ const HomePage: React.FC = () => {
               Our algorithm adapts to your learning pace and optimizes review timing.
             </p>
           </div>
-          <div className="bg-gray-800 p-6 rounded-lg shadow-black-50 hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-black-50 hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1 bg-black/10 shadow-green-500/15" >
             <div className="bg-green-400/10 rounded-lg p-3 w-12 h-12 flex items-center justify-center mb-4">
               <BookIcon className="h-6 w-6 text-green-400" />
             </div>
@@ -141,7 +141,7 @@ const HomePage: React.FC = () => {
               Create flashcards with text, images, and custom formatting.
             </p>
           </div>
-          <div className="bg-gray-800 p-6 rounded-lg shadow-black-50 hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-black-50 hover:drop-shadow-2xl shadow-2xl hover:-translate-y-1 bg-black/10 shadow-green-500/15">
             <div className="bg-green-400/10 rounded-lg p-3 w-12 h-12 flex items-center justify-center mb-4">
               <SparkleIcon className="h-6 w-6 text-green-400" />
             </div>

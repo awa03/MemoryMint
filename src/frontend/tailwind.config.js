@@ -38,7 +38,38 @@ export default {
           }
         }
       }
-    },
+    }
+  },
+  daisyui: {
+    themes: [
+      {
+        memorymint: {
+          "primary": "#10b981",
+          "secondary": "#3b82f6",
+          "accent": "#f43f5e",
+          "neutral": "#1f2937",
+          "base-100": "#111827",
+          "info": "#2563eb",
+          "success": "#16a34a",
+          "warning": "#d97706",
+          "error": "#dc2626"
+        },
+        memorymintlight: {
+          "primary": "#10b981",
+          "secondary": "#3b82f6",
+          "accent": "#f43f5e",
+          "neutral": "#f3f4f6",
+          "base-100": "#ffffff",
+          "info": "#2563eb",
+          "success": "#16a34a",
+          "warning": "#d97706",
+          "error": "#dc2626"
+        }
+      },
+      "light", 
+      "dark", 
+      "cupcake"
+    ]
   },
   plugins: [
     require('daisyui'),
